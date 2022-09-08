@@ -136,6 +136,15 @@ def index2():
                     idTaula = camp[0]
                     break
                 print(idTaula)
+
+                if data[1] == 0:
+                    value3=[]
+                    value3.append(value2[0])
+                    value2=value3
+                    
+                else:
+                    pass
+                
             
 
                 return render_template('index2.html', value=value, b=a, value2=value2, c=c, usuario=session['username'], edit2=str(data[0]), admin=str(data[1]), idTaula=str(idTaula), filtertaula = str(data[2]), filterCol = str(data[3]), filterValue = str(data[4]))
