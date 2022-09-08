@@ -1,0 +1,276 @@
+/*
+  Copyright (c) Microsoft Corporation.
+  Licensed under the MIT license.
+*/
+
+html{background:#ededed;
+    width: 100%;
+    margin:0;
+    padding:0;}
+
+header {
+    background: #015439;
+    height: 70px;
+    width: 100%;
+    color: #ffffff;
+}
+
+header > p {
+    background: #ffffff;
+    font: bold 5.6em "segoe ui", arial, sans-serif;
+    margin-left: 31px;
+    padding-top: 20px;
+ 
+}
+
+select {
+    background-color: transparent;
+    border: 0;
+    text-align:center;
+    width: 100%;
+    -webkit-appearance: none;
+}
+
+input.seis {
+  background-color: transparent;
+    border: 0;
+    text-align:center;
+    width: 100%;
+
+}
+
+
+td > p {
+    font: bold 2.0em "segoe ui", arial, sans-serif;
+    margin-top:2px;
+}
+
+td > a {
+    font: bold 1em "segoe ui", arial, sans-serif;
+    margin-left:10px;
+    margin-right:10px;
+    margin-top:20px;
+}
+
+form {
+    display: block;
+    margin-top: 0em;
+    background: #b1b1b1;
+    
+}
+
+main {
+    margin: 0 auto;
+    width: 100%;
+    
+}
+
+section#text-container > div > p {
+    font: 1.2em "segoe ui", arial, sans-serif;
+}
+
+section#report-container {
+    height: calc(0.5625 * 80vw); /* 16:9 aspect ratio */
+}
+
+/* @media only screen and (max-width: 575px) {
+    section#report-container {
+        height: calc(0.5625 * 100vw); 
+    }
+} */
+
+footer > p {
+    font: 1em "segoe ui", arial, sans-serif;
+}
+
+iframe {
+    border: none;
+}
+div{
+    height: 68px;
+    background: #015439;
+}
+
+
+.footer {
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: #015439;
+  color: white;
+  text-align: center;
+
+}
+div.segundo{
+    height: 34px;
+}
+
+div.cuarto{
+    height: 34px;
+    background: #015439;
+}
+    
+    @media only screen and (min-width: 768px) {
+    .c1{ width:75%;}
+    .c2{ width:25%; float:right;clear:right;}
+    
+    }
+
+div.admin{
+    height: 68px;
+    background: #ededed;
+    margin-top:40px;
+}
+
+.hscroll {
+    overflow-x: auto; /* Horizontal */
+    height: auto;
+    background: #ededed;
+  }
+.alinear-derecha{
+    float: right;
+}
+
+img.redimension {
+    width:40px;
+    height:40px;
+  }
+
+  table.filtro{
+    background: #cde1cb;
+    width:100%;
+    table-layout: fixed;
+  }
+
+  table.encabezado{
+    background: #015439;
+    width:100%;
+    table-layout: fixed;
+  }
+  
+  th {color:#ea6852}
+
+  .dropbtn {
+    background-color: transparent;
+    color: white;
+    font: bold 1em "segoe ui", arial, sans-serif;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .dropbtn:hover, .dropbtn:focus {
+    background-color: #a7a7a7;
+  }
+  
+  .dropdown {
+    position: relative;
+  }
+  
+  .dropdown-content {
+    display: none;
+    right:0;
+    position: absolute;
+    background-color: #222d326e;
+    min-width: 160px;
+    overflow: visible;
+    box-shadow: 0px 16px 16px 0px rgba(0,0,0,0.2);
+    z-index: 2000;
+    height: auto;
+  }
+  
+  .dropdown-content a {
+    color: rgb(255, 255, 255);
+    padding: 5px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown a:hover {background-color: #ddd;}
+  
+  .show {display: block;}
+
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #b1b1b1;
+    background-color: #b1b1b1;
+    
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  li a:hover {
+    background-color: #111;
+  }
+  a {
+    text-decoration: none;
+    color: #0b2945;
+  }
+  .dropdown-toggle {
+    background: #b1b1b1;
+    border-radius: 3px;
+    padding: 8px;
+    display: block;
+    position: relative;
+  }
+
+  
+  ul.dropdown {
+    background: #b1b1b1;
+    border-radius: 3px;
+    margin-top: 10px;
+    min-width: 12em;
+    padding: 0;
+    position: relative;
+    top: 100%;
+    width: 100%;
+    display: none;
+  }
+  ul.dropdown::after {
+    border-bottom: 5px solid #b1b1b1;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    content: "";
+    position: relative;
+    right: 12px;
+    top: -5px;
+  }
+  ul.dropdown li {
+    list-style-type: none;
+  }
+  ul.dropdown li a {
+    text-decoration: none;
+    padding: 8px 15px;
+    display: block;
+  }
+  
+ 
+
+  input.type2{
+    background-color:#ededed;padding: 0;margin: 0;border: 0;font-size: 12.5px;text-align:center
+  }
+  
+  .con_estilos {
+    background-color:#ededed;
+    padding: 0x;
+    font-size: 12.5px;
+    text-align:center;
+    border: 0;
+    height: 100%;
+    
+  }
+    

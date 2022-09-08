@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Visot base de datos</title>
+{% endblock %}
+{% block content %}
+
+
+<div class="content">
+    <h1 style="text-align: center;" id="titulo"></h1>
+   
+    {% for camp in taula%}
+    <form id="formulari" action="/update/{{nomTaula}}/{{idLinea}}" method="POST" style="padding:10px;">
+        {% for inp in taula.description%}
+        {% if  '<option' in camp[inp[0]]|string  %} 
+        {{inp[0]}}<select name="{{inp[0]}}" id="{{inp[0]}}" >{{camp[inp[0]]|safe}}</select>
+        {% elif  'bool' in inp[1]|string  %} 
+        {{inp[0]}}<select name="{{inp[0]}}" id="{{inp[0]}}" type="text" style="width: 60px;"><option>true</option><option>false</option> </select>
+        {% elif 'int' in inp[1]|string   %} 
+        {{inp[0]}}<input name="{{inp[0]}}" id="{{inp[0]}}" type="number" style="width: 60px;" value={{camp[inp[0]]}}> 
+        {% elif 'decimal.Decimal' in inp[1]|string   %} 
+        {{inp[0]}}<input name="{{inp[0]}}" id="{{inp[0]}}" type="number" step="any" style="width: 75px;" value={{camp[inp[0]]}}> 
+        {% elif 'datetime' in inp[1]|string  %} 
+        {{inp[0]}}<input name="{{inp[0]}}" id="{{inp[0]}}" type="date" style="width: 140px;" value="{{camp[inp[0]].strftime('%Y-%m-%d')}}"> 
+        {% elif 'bit' in inp[1]|string  %} 
+        {{inp[0]}}<input name="{{inp[0]}}" id="{{inp[0]}}" type="checkbox" style="width: 20px;" value="{{camp[inp[0]]}}"> 
+        {%else%}
+        {{inp[0]}}<input name="{{inp[0]}}" id="{{inp[0]}}" type="text" style="width:{{inp[3]*10}}px;" value="{{camp[inp[0]]}}"> 
+        {% endif %}
+       {% endfor %}
+      
+        <input type="submit" value="Update">
+     
+         </form>
+         {% endfor %}
+</div> 
+
+<script>
+    var str = $("#{{taula.description[0][0]}} option:selected").text();
+    $( "#titulo" ).text( "ACTUALIZAR "+str);
+    </script>
+{% endblock %}

@@ -1,0 +1,510 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Visor Base de datos</title>
+{% endblock %}
+
+{% block content %}
+<header>
+    <div>
+    <table class="encabezado">
+        
+        <tr>
+        <td>  
+            <img src="//puntinformatic.com/wp-content/uploads/2021/04/logo-punt-informatic-new-white.png" class="alinear-derecha2" height="33px" >
+        </td>
+        <td style="text-align: center; font: bold 2.0em 'segoe ui', arial, sans-serif;" valign="middle">
+            BusupBI
+        </td>
+        <td style="text-align: right" valign="top">
+            <div class="dropdown">
+                <button onclick="myFunction()" class="dropbtn">{{usuario}}</button>
+                <div id="myDropdown" class="dropdown-content">
+                    
+                    <a href="/powerbi">Power BI</a>
+                    <a href="/logout">Cerrar Sesion</a>
+        
+                </div>
+                <img class="redimension" src="{{ url_for('static', filename='img/usuario.png')}}" class="alinear-derecha" valign="middle">
+                
+            </div>
+
+        </td>
+        </tr>
+    </table>
+    </div>
+
+</header>
+<div class="segundo">
+   
+    {{nav.top.render(id='x-navbar',class='x-navbar')}}
+    
+    </div>
+<div  class="admin">
+
+
+  {{nomTaula}}
+</div>
+   
+
+
+    {% if 2 < 1 %}
+    <h4>No hay registros</h4>
+    {%else%}
+    
+    
+     <div id="flotante4" class="filter" style="display:'';">
+        <div  class="box1r"><a href="javascript:mostrar();"><img class="redimension2" src="{{ url_for('static', filename='img/filter.png')}}"/></a>
+            <button class='boton2' onclick="location.href='javascript:mostrar2();'"><img class="redimension2" src="{{ url_for('static', filename='img/añadir.png')}}"/></button>
+            <button class='boton2' onclick="Alerta();"><img class="redimension2" src="{{ url_for('static', filename='img/actualizar.png')}}"/></button>
+            <button class='boton2' onclick="Changeinput();"><img class="redimension2" src="{{ url_for('static', filename='img/delete.png')}}"/></button>
+            <button class='boton2' onclick="mostrar3();"><img class="redimension2" src="{{ url_for('static', filename='img/subir.png')}}"/></button></div>
+  
+    </div>
+    
+    
+    <div  class="boxtotal">
+        
+        <div id="flotante5" class="box1"  >
+    
+   
+            <table class="table table-hover" >
+                <thead>
+                    <th  style="vertical-align: top; TEXT-ALIGN:right" ><a href="javascript:ocultar();">Close</a></th>
+                    
+            </thead>
+            
+                <tbody>
+                        <form id="filtreForm" action="/{{nomTaula}}/{{idLinea}}" >
+                        {% for inp in filtros%}
+                        {%if "Date2" in  inp[0][0] %}
+                        <tr><td>
+                            <span>{{inp[1]}}</span>
+                            <br>{{inp[0][0]|safe}} </td>
+                        </tr>
+
+                        {%else %}
+                        <tr><td>
+                            <span>{{inp[1]}}</span>
+                            <br>{{inp[0][0]|safe}}</td>
+                        </tr>
+                        {%endif%}
+                            {% endfor %}
+                    </form>
+                    
+                    <tr>
+                        <td><button class='boton2' type="submit" form="filtreForm">Apply</button> <button class='boton2' onclick="location.href='/{{nomTaula}}/0'">Clear</button></td>
+                        
+                    </tr>
+                    
+                
+                </tbody>
+                </table>
+        </div>
+
+    
+       <div class="hscroll" id="selecID">
+            <div>
+            <!-- <table class="filtro" > -->
+            <table class="table table-hover" >
+                <thead>
+                
+                <tr>
+                    {% for cap in description%}
+                    {%if cap[0] != "pk" %}
+                    {%if cap[0] == "ID" %}
+                    <th><input type="checkbox" onClick="toggle(this)"></th>
+                    {%else%}
+                <th style="vertical-align: center; TEXT-ALIGN:center">{{cap[0]}}</th>
+                    {%endif%}
+                    {%endif%}
+                    {% endfor %}
+                    
+                    {%if not delHidden or not detHidden%}
+                    <th>Acciones</th>
+                    {%endif%}
+                    
+                </tr>
+                        </thead>
+                {%if edit == 0%}
+                <tbody>
+                    {% for fila in taula%}
+                <tr>
+                    {% for camp in fila%}
+                    {%if description[loop.index-1][0] != "pk" %}
+                    <td>{{ camp}}</td>
+                    {%endif%}
+                    {% endfor %}
+                    <td>
+                        {% if not delHidden %}
+                        <a href="/delete/{{nomTaula}}/{{fila.ID}}">Delete</a>
+                        <br>
+                        {% endif %}
+                        {% if not detHidden%}
+                        <a href="/{{detTaula}}/0/{{detCol}}_DetallCRUD/{{fila.ID}}">Detalle</a>
+                        {% endif %}
+                    </td>
+                </tr>
+                    {% endfor %}
+
+                 {%else%}        
+    
+                <form name="formulari2" id="formulari2" action="/update/{{nomTaula}}/{{idLinea}}" method="POST">
+                <input type="hidden" value='No' name='delete' id ='delete'>
+                {%for a in pk%}
+                <input type="hidden" value={{a}} name='pk'>
+                {% endfor %}
+                {% if not delHidden or not detHidden%} 
+                        {% for i in form3%}
+                        <tr>
+                            {%for f in i%}
+                        
+                            {%for a in f%}
+                        
+                                <td  style="border-bottom: rgb(17, 17, 17) 1px solid;">
+
+                                    {{a[0]|safe}}
+                        
+                                </td>
+                                {% endfor %}
+                            {% endfor %}
+                            
+                    
+                        </tr>
+                        {% endfor %}
+                        
+                        {%else%}
+
+                        {% for i in form2%}
+                        <tr >
+                            {%for a in i%}
+                        
+                                <td style="border-bottom: rgb(17, 17, 17) 1px solid;">
+
+                            
+                                    {{a[0]|safe}}
+                                
+                                </td>
+                                {% endfor %}
+                        
+                            
+                    
+                        </tr>
+                        {% endfor %}
+
+
+                        {% endif %}
+                        <!-- <tr style="width:1000px" >
+                            <input class='boton2' type="submit" value="Update"> -->
+                        <!-- </tr>  
+
+                            <tr > <input type="button" id="BtnSeleccionar" value="Seleccionar todo" class='boton2' style="border-left-width: 2px;margin-left: 10px;">
+                            
+
+                        </tr>                     -->
+                        
+                    </form>  
+            
+                 </tbody>
+                </table>
+            </div>
+
+                    {%if not newHidden%}
+            <div id="flotante6" class="box2"  >
+                <table class="table table-hover"  >
+                <thead>
+                    <th colspan="2" style="vertical-align: top; TEXT-ALIGN:right"><a  href="javascript:ocultar2();">Close</a></th>
+                    <!-- <th style="vertical-align: top; TEXT-ALIGN:right" ><a href="javascript:ocultar2();">X</a></th> -->
+                </thead>
+                <tbody>
+                <tr>
+
+                <form id="formulari" action="/{{nomTaula}}/{{idLinea}}"  method="POST">
+                    {% for inp in Registro%}
+                    {%if 'ID' in inp[0][0]%} 
+                    <thead>
+                       
+                    </td>
+
+                    {%else%}
+                    <tr><td>
+                        <span>{{inp[1][0]}}</span></td>
+                        <td><br>{{inp[0][0]|safe}}
+                </td></tr>
+                {% endif %}
+                     {% endfor %}
+                
+                <tr> <td colspan="2" style="vertical-align: middle; TEXT-ALIGN:center" ><input type="submit" class='boton2' value="New Registration"></td> 
+                   
+               
+                
+                    </form>  
+                    </tr>
+        
+          
+                    {% endif %}
+                    {% endif %}
+                 
+                    </tbody>
+                   
+               
+           
+                    </table> 
+                </div>
+                    <div id="flotante7" class="box2"  >
+                        <table class="table table-hover"  >
+                            <tr>
+               
+                                <form id="formulari" action="/insertar"  method="POST" style="padding:10px;" enctype="multipart/form-data">
+                                   {{tab|safe}}
+                                <input type="file" name="archivo">
+                    <input type="submit" onclick="ocultar3();">
+                    </form>  
+                    </tr>
+                    </table> 
+                </div>
+                
+            </div>
+        </div>
+      
+
+        
+       
+        <!-- <table> 
+
+            <tr>
+               
+                <form id="formulari" action="/insertar"  method="POST" style="padding:10px;" enctype="multipart/form-data">
+                   {{tab|safe}}
+                <input type="file" name="archivo">
+    <input type="submit">
+    </form>  
+    </tr>
+    </table>  -->
+
+
+
+
+    {% endif %}
+    
+    <script>
+        function resizeInput() {
+         $(this).attr('size', $(this).val().length);
+        //  $(this).attr('size', $(this).val().length + 10);
+     }
+     
+     $('input[type="text"]')
+         // event handler
+         .keyup(resizeInput)
+         // resize on page load
+         .each(resizeInput);
+             
+             
+             </script>
+     
+     <script>
+         function resizeInput() {
+          $(this).attr('size', $(this).val().length);
+      }
+      
+      $('input[type="number"]')
+          // event handler
+          .keyup(resizeInput)
+          // resize on page load
+          .each(resizeInput);
+              
+              
+              </script>
+     <script>
+     $('select').change(function(){
+         var text = $(this).find('option:selected').text()
+         var $aux = $('<select/>').append($('<option/>').text(text))
+         $(this).after($aux)
+         $(this).width($aux.width())
+         $aux.remove()
+       }).change()
+     </script>
+     <script>
+         $(document).ready(function(){
+             $(".dropdown-toggle").dropdown();
+         });
+         </script>
+
+<script languague="javascript">
+    function mostrar() {
+        // div = document.getElementById('flotante');
+        // div.style.display = '';
+
+        // div = document.getElementById('flotante2');
+        // div.style.display = 'none';
+
+        // div = document.getElementById('flotante3');
+        // div.style.display = '';
+
+        // div = document.getElementById('flotante4');
+        // div.style.display = 'none';
+
+        div = document.getElementById('flotante5');
+        div.style.display = 'inline-block';
+
+        div = document.getElementById('selecID');
+        // div.style.width = '85%'
+        div.className = 'Physics'
+    }
+
+  
+
+   
+</script>
+
+<script languague="javascript">
+    function mostrar2() {
+    
+        div = document.getElementById('flotante6');
+        div.style.display = '';
+    }
+</script>
+
+
+<script languague="javascript">
+    function mostrar3() {
+    
+        div = document.getElementById('flotante7');
+        div.style.display = '';
+    }
+</script>
+
+<script languague="javascript">
+    function ocultar2() {
+    
+        div = document.getElementById('flotante6');
+        div.style.display = 'none';
+    }
+</script>
+
+<script languague="javascript">
+    function ocultar3() {
+    
+        div = document.getElementById('flotante7');
+        div.style.display = 'none';
+    }
+</script>
+
+
+<script type="text/javascript">
+    $(function() {
+    
+      $('input[name="Date2"]').daterangepicker({
+          autoUpdateInput: false,
+          locale: {
+              cancelLabel: 'Clear'
+          }
+      });
+    
+      $('input[name="Date2"]').on('apply.daterangepicker', function(ev, picker) {
+          $(this).val(picker.startDate.format('MM-DD-YYYY') + ' - ' + picker.endDate.format('MM-DD-YYYY'));
+      });
+    
+      $('input[name="Date2"]').on('cancel.daterangepicker', function(ev, picker) {
+          $(this).val('');
+      });
+    
+    });
+    </script>
+
+<script>
+
+$(document).ready(function() {
+  selected = true;
+  $('#BtnSeleccionar').click(function() {
+    if (selected) {
+      $('#selecID input[type=checkbox]').prop("checked", true);
+      $('#BtnSeleccionar').val('Deseleccionar');
+    } else {
+      $('#selecID input[type=checkbox]').prop("checked", false);
+      $('#BtnSeleccionar').val('Seleccionar');
+    }
+    selected = !selected;
+  });
+});
+     
+    
+</script>
+<script>
+function toggle(source) {
+    checkboxes = document.getElementsByName('ID');
+  
+    for(var i=0, n=checkboxes.length;i<n;i++) {
+      checkboxes[i].checked = source.checked;
+    }
+  
+  }
+</script>
+<script type="text/javascript">
+     
+    function Changeinput() {
+        var Myelement = document.getElementById("delete");
+        var resultado = window.confirm('¿Estas seguro que deseas Eliminar los Datos?');
+if (resultado === true) {
+    window.alert('Okay, si estas seguro.');
+    console.log(Myelement.value);
+    Myelement.value = "Si";
+    console.log(Myelement.value);
+    document.formulari2.submit();
+} else { 
+    
+}}    
+</script>
+
+<script>
+    function Alerta() {
+var resultado = window.confirm('¿Estas seguro que deseas Actualizar los Datos?');
+if (resultado === true) {
+    window.alert('Okay, si estas seguro.');
+    document.formulari2.submit();
+} else { 
+  
+}}
+</script>
+<script>
+ $('input[class="type2"]').on("change",function(){
+    // var ids=$(this).attr('name');
+    // var cb = document.querySelector('#13')
+    // console.log(cb.checked)
+    // checkboxes = document.getElementsByName('ID');
+    
+    // console.log(ids);
+    $(this).css('color', 'red');
+    // aqui va el codigo que requieres hacer cuando se genere algun cambio....
+  });
+</script>
+
+<script>
+    $('select[class="con_estilos"]').on("change",function(){
+       // var ids=$(this).attr('name');
+       // var cb = document.querySelector('#13')
+       // console.log(cb.checked)
+       // checkboxes = document.getElementsByName('ID');
+       
+       // console.log(ids);
+       $(this).css('color', 'red');
+       // aqui va el codigo que requieres hacer cuando se genere algun cambio....
+     });
+   </script>
+
+
+
+
+
+
+<!-- <div> -->
+<div class="pag">
+{{ pagination.links }}
+</div>
+
+<!-- <div class="footer">
+    <img src="//puntinformatic.com/wp-content/uploads/2021/04/logo-punt-informatic-new-white.png" class="alinear-derecha2" height="33px" >
+    </div> -->
+<!-- </div> -->
+{% endblock %}
+

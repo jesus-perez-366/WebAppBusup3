@@ -1,0 +1,460 @@
+/*
+  Copyright (c) Microsoft Corporation.
+  Licensed under the MIT license.
+*/
+
+html{background:#ededed;
+    width: 100%;
+    height: 100%;
+    margin:0;
+    padding:0;
+  }
+
+
+header {
+    background: #015439;
+    height: 50px;
+    width: 100%;
+    color: #ffffff;
+}
+
+header > p {
+    background: #ffffff;
+    font: bold 5.6em "segoe ui", arial, sans-serif;
+    margin-left: 31px;
+    padding-top: 20px;
+ 
+}
+
+select {
+    background-color: transparent;
+    border: 0;
+    text-align:center;
+}
+
+th{font: bold 0.8em "segoe ui", arial, sans-serif;
+  background:#015439;
+	padding:7px;
+	color:white;
+  width: auto}
+
+td {
+	
+  TEXT-ALIGN:left;
+  
+   }
+
+
+
+td > p {
+    font: bold 2.0em "segoe ui", arial, sans-serif;
+    margin-top:2px;
+}
+
+td > a {
+    font: bold 1em "segoe ui", arial, sans-serif;
+    margin-right:10px;
+    margin-top:20px;
+}
+
+form {
+    display: block;
+    margin-top: 0em;
+    background: #ededed;
+    
+}
+
+main {
+    margin: 0 auto;
+    width: 100%;
+    
+}
+
+section#text-container > div > p {
+    font: 1.2em "segoe ui", arial, sans-serif;
+}
+
+section#report-container {
+    height: calc(0.5625 * 80vw); 
+}
+
+
+footer > p {
+    font: 1em "segoe ui", arial, sans-serif;
+}
+
+iframe {
+    border: none;
+}
+
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background: #015439;
+  color: white;
+  text-align: center;
+  margin-left: 8px;
+  margin-right: -16px;
+  height: 55px;
+
+}
+div.segundo{
+    height: 34px;
+}
+
+div.cuarto{
+    height: 34px;
+    background: #015439;
+}
+
+input.boton{  background: #015439;
+  color:white;
+  border-radius: 3px;
+
+
+}
+
+input.boton2{  background: #015439;
+  color:white;
+  border-radius: 3px;
+  margin-bottom: 10px;
+
+}
+
+button.boton2{  background: transparent;
+  height: 32px;
+  border-color: transparent;
+
+}
+div.quinto{
+  height: 34px;
+  background: #ededed;
+  margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+
+    div.pag{
+      height: 40px;
+      background: #ededed;
+      font: bold 1.2em "segoe ui", arial, sans-serif;
+      /* display:flex; */
+      justify-content:center;
+      align-items:center;
+      margin-bottom: 80px;
+    
+    
+}
+
+
+  
+
+  table.filtro{
+    background: #ededed;
+    table-layout: auto;
+    width:100%;
+    max-height:620px;
+    
+  }
+
+  table.filtros{
+    width:100%;
+    max-height:620px;
+    overflow-y: scroll;
+    max-height: 590px;
+    
+  }
+
+ 
+
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #ebebeb;
+
+    
+  }
+
+  ul.pagination {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #ebebeb;
+    display: inline-block;
+
+    
+  }
+
+  
+  
+  li {
+    float: left;
+  }
+
+  nav {    text-align: center;
+    }
+  
+  li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  li a:hover {
+    background-color: #cde1cb;
+    color: #ea6852;
+  }
+  a {
+    text-decoration: none;
+    color: #0b2945;
+  }
+  .dropdown-toggle {
+    background: #cde1cb;
+  
+    padding: 8px;
+    display: block;
+    position: relative;
+  }
+
+  
+  ul.dropdown {
+    background: #cde1cb;
+
+    padding: 0;
+    position: relative;
+    top: 100%;
+    width: 100%;
+    display: none;
+  }
+  ul.dropdown::after {
+    border-bottom: 5px solid #cde1cb;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    content: "";
+    position: relative;
+    right: 12px;
+    top: -5px;
+  }
+  ul.dropdown li {
+    list-style-type: none;
+  }
+  ul.dropdown li a {
+    text-decoration: none;
+    padding: 8px 15px;
+    display: block;
+  }
+  
+ 
+
+ 
+
+
+
+  .espacio {
+    width: 8px;
+    background: transparent;
+    float:left;
+  }
+
+  
+    
+ 
+
+  thead tr th { 
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    font: bold 0.8em "segoe ui", arial, sans-serif;
+  background:#015439;
+	padding:7px;
+	color:white;
+  width: auto;
+}
+
+
+/* Los que necesito  */
+
+div.filter{
+  height: 32px;
+  background: #ededed;
+  float: right;
+  margin-right: 20px;
+
+}
+
+
+div.admin{
+    height: 40px;
+    background: #ededed;
+    font: bold 1.8em "segoe ui", arial, sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.hscroll {
+  overflow-x: auto; /* Horizontal */
+  overflow-y: scroll;
+  width: 100%;
+  max-height: 730px;
+  background: #ededed;
+  margin-bottom: 10px;
+  margin-top: 5px;
+  display: inline-block;
+  position: relative;
+  padding-left: 10px;
+
+}
+
+
+.alinear-derecha{
+  float: right;
+
+}
+
+
+.alinear-derecha2{
+  float: left;
+  padding:2px;
+  
+}
+
+img.redimension {
+  width:40px;
+  height:40px;
+}
+
+img.redimension2 {
+  width:20px;
+  height:20px;
+}
+
+table.encabezado{
+  background: #015439;
+  width:100%;
+  table-layout: fixed;
+}
+
+.dropbtn {
+  background-color: transparent;
+  color: white;
+  font: bold 1em "segoe ui", arial, sans-serif;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #a7a7a7;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  right:0;
+  position: absolute;
+  background-color: #222d326e;
+  min-width: 160px;
+  overflow: visible;
+  box-shadow: 0px 16px 16px 0px rgba(0,0,0,0.2);
+  z-index: 2000;
+}
+
+.dropdown-content a {
+  color: rgb(255, 255, 255);
+  padding: 5px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+
+
+
+input.type2{
+  background-color:#ededed;padding-left: 15px;margin: 0;border: 0;font-size: 12.5px;text-align:left
+}
+
+.con_estilos {
+  background-color:#ededed;
+  padding: 0x;
+  font-size: 12.5px;
+  text-align:left;
+  border: 0;
+  height: 100%;
+  
+}
+
+
+.con_estilos3 {
+  background-color:#ededed;
+  padding: 0x;
+  font-size: 12.5px;
+  text-align:left;
+  border: 0;
+  height: 100%;
+  
+}
+
+.box1 {
+  display:'';
+  max-width: 14%;
+  background: #ededed;
+  float:left;
+  border-color: #aaaaaa;
+  border-width: 1px;
+  border-style: solid;
+  transform: translate(0%, 90px);
+  Margin-left: 10px;
+  min-width: 215px;
+}
+
+
+.box2 {
+  display:'';
+  position: fixed; 
+  left: 50%; 
+  top: 20%; 
+  z-index: 3;
+  transform: translate(-50%, 0%);
+  background-color: #bcbcbc;
+  overflow-y: scroll;
+  max-height: 590px;
+}
+
+.boxtotal {
+  width: 100%;
+   height: 100%;
+   background: #ededed;
+   padding-right: 10px;
+ 
+ 
+}
+
+
+.Physics{min-width: 80%;
+  max-width: 85%;
+  overflow-x: auto; /* Horizontal */
+  overflow-y: scroll;
+  max-height: 730px;
+  background: #ededed;
+  margin-bottom: 10px;
+  margin-top: 5px;
+  display: inline-block;
+  position: relative;
+  padding-left: 10px;}
+
+  

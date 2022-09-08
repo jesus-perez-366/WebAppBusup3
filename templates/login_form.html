@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <style>
+        body {
+    background: #015439;
+    font-family: 'Roboto', sans-serif;
+}
+ 
+.login-box {
+    margin-top: 75px;
+    border-radius: 15px;
+    height: auto;
+    background: white;
+    text-align: center;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+ 
+.login-key {
+    height: 100px;
+    font-size: 80px;
+    line-height: 100px;
+    background: -webkit-linear-gradient(#27EF9F, #47ed7e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+ 
+.login-title {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 30px;
+    letter-spacing: 2px;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #00bf6f;
+}
+ 
+.login-form {
+    margin-top: 25px;
+    text-align: left;
+}
+ 
+input[type=text] {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #00bf6f;
+    border-top: 0px;
+    border-radius: 0px;
+    font-weight: bold;
+    outline: 0;
+    margin-bottom: 20px;
+    padding-left: 0px;
+    color: #515151;
+}
+ 
+input[type=password] {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #00bf6f;
+    border-top: 0px;
+    border-radius: 0px;
+    font-weight: bold;
+    outline: 0;
+    padding-left: 0px;
+    margin-bottom: 20px;
+    color: #515151;
+}
+ 
+.form-group {
+    margin-bottom: 40px;
+    outline: 0px;
+}
+ 
+.form-control:focus {
+    border-color: inherit;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-bottom: 2px solid #00bf6f;
+    outline: 0;
+    background-color: transparent;
+    color: #515151;
+}
+ 
+input:focus {
+    outline: none;
+    box-shadow: 0 0 0;
+}
+ 
+label {
+    margin-bottom: 0px;
+}
+ 
+.form-control-label {
+    font-size: 10px;
+    color: #ea6852;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+ 
+.btn-outline-primary {
+    border-color: #ea6852;
+    background-color: #ea6852;
+    color: white;
+    border-radius: 40px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+ 
+.btn-outline-primary:hover {
+    background-color: #ea6852;
+    border-color: #ea6852;
+    right: 0px;
+}
+ 
+.login-btm {
+    float: left;
+}
+ 
+.login-button {
+    padding-right: 0px;
+    text-align: right;
+    margin-bottom: 25px;
+}
+ 
+.login-text {
+    text-align: left;
+    padding-left: 0px;
+    color: #515151;
+}
+ 
+.loginbttm {
+    padding: 0px;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  /* background: #222D32; */
+  color: white;
+  text-align: right;
+  padding-right: 10px;
+  padding-bottom: 5px;
+
+}
+
+.alinear-centro{
+    float: center;
+    
+}
+        </style>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+       {% for message in messages %}
+          <div class="alert alert-success">{{ message }}
+          </div>
+       {% endfor %}
+    {% endif %}
+  {% endwith %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-2"></div>
+            <div class="col-lg-6 col-md-8 login-box">
+                <div class="col-lg-12 login-key">
+                    <img src="{{ url_for('static', filename='img/logo-busup-green.svg')}}" class="alinear-centro" style="width:200px; height:60px;">
+                </div>
+                <div class="col-lg-12 login-title">
+                     BusupBI
+                </div>
+ 
+                <div class="col-lg-12 login-form">
+                    <div class="col-lg-12 login-form">
+                        <form action="" method="post">
+                            <div>
+                                <label class="form-control-label">USERNAME</label>
+                                <input type="text" class="form-control" name="username" value="{{request.form.usename}}">
+                            </div>
+                            <div>
+                                <label class="form-control-label">PASSWORD</label>
+                                <input type="password" class="form-control" name="password" value="{{request.form.password}}">
+                            </div>
+                            
+                            <div class="col-lg-12 loginbttm">
+                                <div class="col-lg-6 login-btm login-text">
+                                    <!-- Error Message -->
+                                </div>
+                                <div class="col-lg-6 login-btm login-button">
+                                    <button type="submit" class="btn btn-outline-primary">LOGIN</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-2"></div>
+            </div>
+        </div>
+        <div class="footer">
+            <img src="//puntinformatic.com/wp-content/uploads/2021/04/logo-punt-informatic-new-white.png" class="alinear-derecha" height="33px">
+            </div>
+    
+</body>
+</html>
