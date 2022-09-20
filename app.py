@@ -137,7 +137,7 @@ def index2():
                     break
                 print(idTaula)
 
-                if data[1] == 0:
+                if data[1] == 0 and value2 != []:
                     value3=[]
                     value3.append(value2[0])
                     value2=value3
