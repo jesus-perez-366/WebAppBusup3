@@ -141,6 +141,14 @@ def index2():
                     value3=[]
                     value3.append(value2[0])
                     value2=value3
+                elif data[1] == 2:
+                    value3=[]
+                    value3.append(value2[2])
+                    value2=value3
+                elif data[1] == 3:
+                    value3=[]
+                    value3.append(value2[3])
+                    value2=value3
                     
                 else:
                     pass
